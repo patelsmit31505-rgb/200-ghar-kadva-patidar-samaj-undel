@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Registration</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2 style="text-align:center;">Event Registration</h2>
+
+<form action="save_registration.php" method="post" style="text-align:center;">
+<input type="text" name="name" placeholder="Full Name" required><br><br>
+<input type="text" name="mobile" placeholder="Mobile Number" required><br><br>
+<button type="submit">Register</button>
+</form>
+
+</body>
+</html>
+<?php
+$name = $_POST['name'];
+$mobile = $_POST['mobile'];
+
+$file = fopen("registrations.txt", "a");
+fwrite($file, "Name: $name | Mobile: $mobile \n");
+fclose($file);
+
+echo "Registration Successful!";
+?>
